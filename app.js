@@ -11,19 +11,25 @@ const customers = require('./routes/customers');
 const movies = require('./routes/movies');
 const home = require('./routes/home');
 
+
 const app = express();
 const port = process.env.PORT = 3000;
 console.log(app.get('env'));
 
+
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'));
     startuppDebugger('Morgan enabled...');
+
+
 }
 
 //Db work
 mongoose.connect('mongodb://localhost/Vidly', {useNewUrlParser: true})
 .then(console.log('Connected to database....'))
 .catch(err=>console.log('Error connecting to database....  ', err));
+
+console.log("Doing the thing");
 
 
 app.set('view engine', 'pug');
